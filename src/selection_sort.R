@@ -13,8 +13,6 @@ selection_sort = function(array){
         
         min = i
         
-        print(array)
-        
         for(j in (i+1):n){
             if(array[j] < array[min]){
                 min = j
