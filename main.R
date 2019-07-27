@@ -38,7 +38,7 @@ array_3 = n:1
 
 # few unique
 set.seed(42)
-array_4 = sample(1:n/3, n)
+array_4 = ceiling(sample(1:n/3, n))
 
 ########################################################################
 
@@ -232,7 +232,7 @@ for(i in 1:(max_comparisons+1)){
     
     # selection_sort - few unique
     if(i <= length(selection_4)){
-        p9 = dgg_sort_plot(
+        p8 = dgg_sort_plot(
             array = selection_4[[i]]$array,
             comparison = selection_4[[i]]$comparison,
             sorted = selection_4[[i]]$sorted,
@@ -242,7 +242,7 @@ for(i in 1:(max_comparisons+1)){
             )
         )
     } else {
-        p9 = dgg_sort_plot(
+        p8 = dgg_sort_plot(
             array = selection_4[[length(selection_4)]]$array,
             sorted = 1:n,
             title = paste0(
@@ -266,7 +266,6 @@ for(i in 1:(max_comparisons+1)){
     # c6 = textGrob("DGG", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
     
     # plot figures
-    matrix(c(NA,rep(1:3,each=3)), nrow=2, byrow=TRUE)
     grid.arrange(
         layout_matrix = rbind(
             c(NA,94,94,94,95,95,95),
@@ -282,7 +281,7 @@ for(i in 1:(max_comparisons+1)){
             c(93,4,4,4,8,8,8),
             c(93,4,4,4,8,8,8),
             c(93,4,4,4,8,8,8)
-        ),p1,p2,p3,p4,p5,p6,p7,p9,
+        ),p1,p2,p3,p4,p5,p6,p7,p8,
         r1,r2,r3,r4,
         c1,c2#,c3,c4,c5,c6
     )
