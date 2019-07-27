@@ -87,7 +87,7 @@ for(i in 1:(max_comparisons+1)){
         )
     } else {
         p1 = dgg_sort_plot(
-            array = bubble_1[[length(bubble_1)]]$array,
+            array = sort(array_1),
             sorted = 1:n,
             title = paste0(
                 length(bubble_1), " comparisons; ",
@@ -109,7 +109,7 @@ for(i in 1:(max_comparisons+1)){
         )
     } else {
         p2 = dgg_sort_plot(
-            array = bubble_2[[length(bubble_2)]]$array,
+            array = sort(array_2),
             sorted = 1:n,
             title = paste0(
                 length(bubble_2), " comparisons; ",
@@ -131,7 +131,7 @@ for(i in 1:(max_comparisons+1)){
         )
     } else {
         p3 = dgg_sort_plot(
-            array = bubble_3[[length(bubble_3)]]$array,
+            array = sort(array_3),
             sorted = 1:n,
             title = paste0(
                 length(bubble_3), " comparisons; ",
@@ -153,7 +153,7 @@ for(i in 1:(max_comparisons+1)){
         )
     } else {
         p4 = dgg_sort_plot(
-            array = bubble_4[[length(bubble_4)]]$array,
+            array = sort(array_4),
             sorted = 1:n,
             title = paste0(
                 length(bubble_4), " comparisons; ",
@@ -177,7 +177,7 @@ for(i in 1:(max_comparisons+1)){
         )
     } else {
         p5 = dgg_sort_plot(
-            array = selection_1[[length(selection_1)]]$array,
+            array = sort(array_1),
             sorted = 1:n,
             title = paste0(
                 length(selection_1), " comparisons; ",
@@ -199,7 +199,7 @@ for(i in 1:(max_comparisons+1)){
         )
     } else {
         p6 = dgg_sort_plot(
-            array = selection_2[[length(selection_2)]]$array,
+            array = sort(array_2),
             sorted = 1:n,
             title = paste0(
                 length(selection_2), " comparisons; ",
@@ -221,7 +221,7 @@ for(i in 1:(max_comparisons+1)){
         )
     } else {
         p7 = dgg_sort_plot(
-            array = selection_3[[length(selection_3)]]$array,
+            array = sort(array_3),
             sorted = 1:n,
             title = paste0(
                 length(selection_3), " comparisons; ",
@@ -243,7 +243,7 @@ for(i in 1:(max_comparisons+1)){
         )
     } else {
         p8 = dgg_sort_plot(
-            array = selection_4[[length(selection_4)]]$array,
+            array = sort(array_4),
             sorted = 1:n,
             title = paste0(
                 length(selection_4), " comparisons; ",
