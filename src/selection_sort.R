@@ -55,7 +55,6 @@ selection_sort_verbose = function(array){
             )
             
             if(array[j] < array[min]){
-                min_previous = min
                 min = j
             }
         }
