@@ -38,7 +38,7 @@ array_3 = n:1
 
 # few unique
 set.seed(42)
-array_4 = ceiling(sample(1:n/3, n))
+array_4 = sample(1:floor(n/3), n)
 
 ########################################################################
 
