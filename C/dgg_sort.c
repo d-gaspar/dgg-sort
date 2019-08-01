@@ -116,16 +116,33 @@ void dgg_sort(int *arr, int n, int pos1, int pos2){
 
         // 3 elements
         if(n == 3){
-            for(i=pos1; i<=(pos1+1); i++){
-                for(j=(i+1); j<=pos2; j++){
+            
+            if(arr[pos1] < arr[pos1+1]){
+                if(arr[pos1+1] < arr[pos2]){
+                    return; // Sorted
+                } else {
+                    swap(&arr[pos1+1], &arr[pos2]);
 
-                    if(arr[i] > arr[j]){
-                        swap(&arr[i], &arr[j]);
+                    if(arr[pos1] > arr[pos1+1]){
+                        swap(&arr[pos1], &arr[pos1+1]);
                     }
+                    return;
+                }
+            } else {
+                swap(&arr[pos1], &arr[pos1+1]);
+
+                if(arr[pos1+1] < arr[pos2]){
+                    return;
+                } else {
+                    swap(&arr[pos1+1], &arr[pos2]);
+
+                    if(arr[pos1] > arr[pos1+1]){
+                        swap(&arr[pos1], &arr[pos1+1]);
+                    }
+                    return;
                 }
             }
-
-            return;
+            
         }
 
         int n_half = n/2;
