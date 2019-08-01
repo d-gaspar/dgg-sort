@@ -111,30 +111,15 @@ int main(void){
 
     int n=array_n, i, j, sorted=1, *arr;
 
-    for(j=2; j<10000; j++){
-        array_n = j;
-        n = j;
+    printf("n: %d\n", n);
 
-        printf("n: %d\n", j);
+    arr = generate_array(n, 1);
 
-        for(i=0; i<100; i++){
-            arr = generate_array(n, 1);
+    print_array(arr, 0, n-1);
 
-//            print_array(arr, 0, n-1);
+    dgg_sort(arr, n, 0, n-1);
 
-            dgg_sort(arr, n, 0, n-1);
-
-            if(is_sorted(arr, n)==0){
-                sorted = 0;
-                printf("i=%d; n=%d\n", i, n);
-                print_array(arr, 0, n-1);
-                break;
-            }
-        }
-        if(sorted==0){
-            break;
-        }
-    }
+    print_array(arr, 0, n-1);
 
     return 0;
 }
