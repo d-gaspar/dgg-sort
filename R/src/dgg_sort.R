@@ -78,9 +78,9 @@ dgg_sort = function(array){
         # 3 elements
         if(n==3){
             
-            if(array[1] < array[2]){
+            if(array[1] <= array[2]){
                 
-                if(array[2] < array[3]){
+                if(array[2] <= array[3]){
                     # sorted
                     return(array)
                 } else {
@@ -94,7 +94,7 @@ dgg_sort = function(array){
             } else {
                 array[c(1,2)] = array[c(2,1)]
                 
-                if(array[2] < array[3]){
+                if(array[2] <= array[3]){
                     return(array)
                 } else {
                     array[c(2,3)] = array[c(3,2)]
@@ -297,7 +297,7 @@ dgg_sort_verbose = function(array, full_array=array, original_n=length(array), p
             
             iter = iter + 1
 
-            if(array[1] < array[2]){
+            if(array[1] <= array[2]){
                 
                 output[[iter]] = list(
                     array = full_array,
@@ -307,7 +307,7 @@ dgg_sort_verbose = function(array, full_array=array, original_n=length(array), p
                 
                 iter = iter + 1
 
-                if(array[2] < array[3]){
+                if(array[2] <= array[3]){
                     # sorted
                     
                     output[[iter]] = list(
@@ -370,7 +370,7 @@ dgg_sort_verbose = function(array, full_array=array, original_n=length(array), p
                 
                 iter = iter + 1
 
-                if(array[2] < array[3]){
+                if(array[2] <= array[3]){
                     
                     output[[iter]] = list(
                         array = full_array,
