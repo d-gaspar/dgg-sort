@@ -117,8 +117,8 @@ void dgg_sort(int *arr, int n, int pos1, int pos2){
         // 3 elements
         if(n == 3){
             
-            if(arr[pos1] < arr[pos1+1]){
-                if(arr[pos1+1] < arr[pos2]){
+            if(arr[pos1] <= arr[pos1+1]){
+                if(arr[pos1+1] <= arr[pos2]){
                     return; // Sorted
                 } else {
                     swap(&arr[pos1+1], &arr[pos2]);
@@ -131,7 +131,7 @@ void dgg_sort(int *arr, int n, int pos1, int pos2){
             } else {
                 swap(&arr[pos1], &arr[pos1+1]);
 
-                if(arr[pos1+1] < arr[pos2]){
+                if(arr[pos1+1] <= arr[pos2]){
                     return;
                 } else {
                     swap(&arr[pos1+1], &arr[pos2]);
