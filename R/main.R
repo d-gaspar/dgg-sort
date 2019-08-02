@@ -347,7 +347,7 @@ for(i in 1:(max_comparisons+1)){
             sorted = 1:n,
             title = paste0(
                 length(dgg_4), " comparisons; ",
-                selection_3[[length(dgg_4)]]$n_swaps, " swaps"
+                dgg_4[[length(dgg_4)]]$n_swaps, " swaps"
             )
         )
     }
