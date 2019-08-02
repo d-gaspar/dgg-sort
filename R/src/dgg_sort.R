@@ -165,6 +165,7 @@ dgg_sort_verbose = function(array, full_array=array, original_n=length(array), p
                 array[c(1,2)] = array[c(2,1)]
                 
                 n_swaps = n_swaps + 1
+                full_array[c(1,2) + pos_aux] = array[c(1,2)]
             }
             
             output[[iter]] = list(
