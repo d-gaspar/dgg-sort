@@ -38,7 +38,7 @@ array_3 = n:1
 
 # few unique
 set.seed(42)
-array_4 = sample(1:floor(n/3), n)
+array_4 = sample(1:floor(n/3), n, replace=TRUE)
 
 ########################################################################
 
@@ -64,11 +64,21 @@ selection_4 = selection_sort_verbose(array_4)
 
 ########################################################################
 
+source("src/dgg_sort.R")
+
+dgg_1 = dgg_sort_verbose(array_1)$output
+dgg_2 = dgg_sort_verbose(array_2)$output
+dgg_3 = dgg_sort_verbose(array_3)$output
+dgg_4 = dgg_sort_verbose(array_4)$output
+
+########################################################################
+
 # PLOT
 
 max_comparisons = max(
     length(bubble_1), length(bubble_2), length(bubble_3), length(bubble_4),
-    length(selection_1), length(selection_2), length(selection_3), length(selection_4)
+    length(selection_1), length(selection_2), length(selection_3), length(selection_4),
+    length(dgg_1), length(dgg_2), length(dgg_3), length(dgg_4)
 )
 
 png("output/sort_animation%03d.png", width=800, height=600, bg = "black")
@@ -254,6 +264,96 @@ for(i in 1:(max_comparisons+1)){
     
     ####################################################################
     
+    # dgg_sort - random
+    if(i <= length(dgg_1)){
+        p21 = dgg_sort_plot(
+            array = dgg_1[[i]]$array,
+            comparison = dgg_1[[i]]$comparison,
+            sorted = dgg_1[[i]]$sorted,
+            title = paste0(
+                i, " comparisons; ",
+                dgg_1[[i]]$n_swaps, " swaps"
+            )
+        )
+    } else {
+        p21 = dgg_sort_plot(
+            array = sort(array_1),
+            sorted = 1:n,
+            title = paste0(
+                length(dgg_1), " comparisons; ",
+                dgg_1[[length(dgg_1)]]$n_swaps, " swaps"
+            )
+        )
+    }
+    
+    # dgg_sort - nearly sorted
+    if(i <= length(dgg_2)){
+        p22 = dgg_sort_plot(
+            array = dgg_2[[i]]$array,
+            comparison = dgg_2[[i]]$comparison,
+            sorted = dgg_2[[i]]$sorted,
+            title = paste0(
+                i, " comparisons; ",
+                dgg_2[[i]]$n_swaps, " swaps"
+            )
+        )
+    } else {
+        p22 = dgg_sort_plot(
+            array = sort(array_2),
+            sorted = 1:n,
+            title = paste0(
+                length(dgg_2), " comparisons; ",
+                dgg_2[[length(dgg_2)]]$n_swaps, " swaps"
+            )
+        )
+    }
+    
+    # dgg_sort - reversed
+    if(i <= length(dgg_3)){
+        p23 = dgg_sort_plot(
+            array = dgg_3[[i]]$array,
+            comparison = dgg_3[[i]]$comparison,
+            sorted = dgg_3[[i]]$sorted,
+            title = paste0(
+                i, " comparisons; ",
+                dgg_3[[i]]$n_swaps, " swaps"
+            )
+        )
+    } else {
+        p23 = dgg_sort_plot(
+            array = sort(array_3),
+            sorted = 1:n,
+            title = paste0(
+                length(dgg_3), " comparisons; ",
+                dgg_3[[length(dgg_3)]]$n_swaps, " swaps"
+            )
+        )
+    }
+    
+    # dgg_sort - few unique
+    if(i <= length(dgg_4)){
+        p24 = dgg_sort_plot(
+            array = dgg_4[[i]]$array,
+            comparison = dgg_4[[i]]$comparison,
+            sorted = dgg_4[[i]]$sorted,
+            title = paste0(
+                i, " comparisons; ",
+                dgg_4[[i]]$n_swaps, " swaps"
+            )
+        )
+    } else {
+        p24 = dgg_sort_plot(
+            array = sort(array_4),
+            sorted = 1:n,
+            title = paste0(
+                length(dgg_4), " comparisons; ",
+                selection_3[[length(dgg_4)]]$n_swaps, " swaps"
+            )
+        )
+    }
+    
+    ####################################################################
+    
     r1 = textGrob("Random", gp=gpar(fontsize=15, fontface="bold", col="white"), rot=90, vjust=0.5)
     r2 = textGrob("Nearly sorted", gp=gpar(fontsize=15, fontface="bold", col="white"), rot=90, vjust=0.5)
     r3 = textGrob("Reverse", gp=gpar(fontsize=15, fontface="bold", col="white"), rot=90, vjust=0.5)
@@ -263,27 +363,27 @@ for(i in 1:(max_comparisons+1)){
     # c3 = textGrob("Insertion", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
     # c4 = textGrob("Merge", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
     # c5 = textGrob("Quick", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
-    # c6 = textGrob("DGG", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
+    c6 = textGrob("DGG", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
     
     # plot figures
     grid.arrange(
         layout_matrix = rbind(
-            c(NA,94,94,94,95,95,95),
-            c(90,1,1,1,5,5,5),
-            c(90,1,1,1,5,5,5),
-            c(90,1,1,1,5,5,5),
-            c(91,2,2,2,6,6,6),
-            c(91,2,2,2,6,6,6),
-            c(91,2,2,2,6,6,6),
-            c(92,3,3,3,7,7,7),
-            c(92,3,3,3,7,7,7),
-            c(92,3,3,3,7,7,7),
-            c(93,4,4,4,8,8,8),
-            c(93,4,4,4,8,8,8),
-            c(93,4,4,4,8,8,8)
-        ),p1,p2,p3,p4,p5,p6,p7,p8,
+            c(NA,94,94,94,95,95,95,99,99,99),
+            c(90,1,1,1,5,5,5,21,21,21),
+            c(90,1,1,1,5,5,5,21,21,21),
+            c(90,1,1,1,5,5,5,21,21,21),
+            c(91,2,2,2,6,6,6,22,22,22),
+            c(91,2,2,2,6,6,6,22,22,22),
+            c(91,2,2,2,6,6,6,22,22,22),
+            c(92,3,3,3,7,7,7,23,23,23),
+            c(92,3,3,3,7,7,7,23,23,23),
+            c(92,3,3,3,7,7,7,23,23,23),
+            c(93,4,4,4,8,8,8,24,24,24),
+            c(93,4,4,4,8,8,8,24,24,24),
+            c(93,4,4,4,8,8,8,24,24,24)
+        ),p1,p2,p3,p4,p5,p6,p7,p8,p21,p22,p23,p24,
         r1,r2,r3,r4,
-        c1,c2#,c3,c4,c5,c6
+        c1,c2,c6#,c3,c4,c5,c6
     )
 }
 dev.off()
@@ -295,7 +395,7 @@ dev.off()
 list.files(path = "output", pattern=".png", full.names=TRUE) %>% 
     image_read() %>% # reads each path file
     image_join() %>% # joins image
-    image_animate(fps=10, loop=1) %>% # animates, can opt for number of loops
+    image_animate(fps=1, loop=1) %>% # animates, can opt for number of loops
     image_write("output/sort_animation.gif")
 
 # cleaning up
