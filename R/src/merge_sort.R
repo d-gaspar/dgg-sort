@@ -47,7 +47,7 @@ merge_sort = function(array){
 
 ########################################################################
 
-merge_sort_verbose = function(array, full_array=array, original_n=length(array), pos_aux=0, iter=0, n_swaps=0, output=list()){
+merge_sort_verbose = function(array, full_array=array, pos_aux=0, iter=0, n_swaps=0, output=list()){
     n = length(array)
     
     if(n>1){
