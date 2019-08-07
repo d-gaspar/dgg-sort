@@ -142,4 +142,4 @@ quick_sort_verbose = function(array, full_array=array, pos_aux=0, iter=0, n_swap
         n_swaps = n_swaps,
         output = output
     ))
-}#;z=quick_sort_verbose(array_1)
+}
