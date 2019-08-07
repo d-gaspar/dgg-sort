@@ -64,6 +64,17 @@ selection_4 = selection_sort_verbose(array_4)
 
 ########################################################################
 
+# merge_sort
+
+source("src/merge_sort.R")
+
+merge_1 = merge_sort_verbose(array_1)$output
+merge_2 = merge_sort_verbose(array_2)$output
+merge_3 = merge_sort_verbose(array_3)$output
+merge_4 = merge_sort_verbose(array_4)$output
+
+########################################################################
+
 source("src/dgg_sort.R")
 
 dgg_1 = dgg_sort_verbose(array_1)$output
@@ -78,6 +89,7 @@ dgg_4 = dgg_sort_verbose(array_4)$output
 max_comparisons = max(
     length(bubble_1), length(bubble_2), length(bubble_3), length(bubble_4),
     length(selection_1), length(selection_2), length(selection_3), length(selection_4),
+    length(merge_1), length(merge_2), length(merge_3), length(merge_4),
     length(dgg_1), length(dgg_2), length(dgg_3), length(dgg_4)
 )
 
@@ -257,7 +269,93 @@ for(i in 1:(max_comparisons+1)){
             sorted = 1:n,
             title = paste0(
                 length(selection_4), " comparisons; ",
-                selection_3[[length(selection_4)]]$n_swaps, " swaps"
+                selection_4[[length(selection_4)]]$n_swaps, " swaps"
+            )
+        )
+    }
+    
+    ####################################################################
+    
+    # merge_sort - random
+    if(i <= length(merge_1)){
+        p13 = dgg_sort_plot(
+            array = merge_1[[i]]$array,
+            comparison = merge_1[[i]]$comparison,
+            title = paste0(
+                i, " comparisons; ",
+                merge_1[[i]]$n_swaps, " swaps"
+            )
+        )
+    } else {
+        p13 = dgg_sort_plot(
+            array = sort(array_1),
+            sorted = 1:n,
+            title = paste0(
+                length(merge_1), " comparisons; ",
+                merge_1[[length(merge_1)]]$n_swaps, " swaps"
+            )
+        )
+    }
+    
+    # merge_sort - nearly sorted
+    if(i <= length(merge_2)){
+        p14 = dgg_sort_plot(
+            array = merge_2[[i]]$array,
+            comparison = merge_2[[i]]$comparison,
+            title = paste0(
+                i, " comparisons; ",
+                merge_2[[i]]$n_swaps, " swaps"
+            )
+        )
+    } else {
+        p14 = dgg_sort_plot(
+            array = sort(array_2),
+            sorted = 1:n,
+            title = paste0(
+                length(merge_2), " comparisons; ",
+                merge_2[[length(merge_2)]]$n_swaps, " swaps"
+            )
+        )
+    }
+    
+    # merge_sort - reversed
+    if(i <= length(merge_3)){
+        p15 = dgg_sort_plot(
+            array = merge_3[[i]]$array,
+            comparison = merge_3[[i]]$comparison,
+            title = paste0(
+                i, " comparisons; ",
+                merge_3[[i]]$n_swaps, " swaps"
+            )
+        )
+    } else {
+        p15 = dgg_sort_plot(
+            array = sort(array_3),
+            sorted = 1:n,
+            title = paste0(
+                length(merge_3), " comparisons; ",
+                merge_3[[length(merge_3)]]$n_swaps, " swaps"
+            )
+        )
+    }
+    
+    # merge_sort - few unique
+    if(i <= length(merge_4)){
+        p16 = dgg_sort_plot(
+            array = merge_4[[i]]$array,
+            comparison = merge_4[[i]]$comparison,
+            title = paste0(
+                i, " comparisons; ",
+                merge_4[[i]]$n_swaps, " swaps"
+            )
+        )
+    } else {
+        p16 = dgg_sort_plot(
+            array = sort(array_4),
+            sorted = 1:n,
+            title = paste0(
+                length(merge_4), " comparisons; ",
+                merge_4[[length(merge_4)]]$n_swaps, " swaps"
             )
         )
     }
@@ -361,29 +459,29 @@ for(i in 1:(max_comparisons+1)){
     c1 = textGrob("Bubble", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
     c2 = textGrob("Selection", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
     # c3 = textGrob("Insertion", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
-    # c4 = textGrob("Merge", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
+    c4 = textGrob("Merge", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
     # c5 = textGrob("Quick", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
     c6 = textGrob("DGG", gp=gpar(fontsize=15, fontface="bold", col="white"), vjust=0.5)
     
     # plot figures
     grid.arrange(
         layout_matrix = rbind(
-            c(NA,94,94,94,95,95,95,99,99,99),
-            c(90,1,1,1,5,5,5,21,21,21),
-            c(90,1,1,1,5,5,5,21,21,21),
-            c(90,1,1,1,5,5,5,21,21,21),
-            c(91,2,2,2,6,6,6,22,22,22),
-            c(91,2,2,2,6,6,6,22,22,22),
-            c(91,2,2,2,6,6,6,22,22,22),
-            c(92,3,3,3,7,7,7,23,23,23),
-            c(92,3,3,3,7,7,7,23,23,23),
-            c(92,3,3,3,7,7,7,23,23,23),
-            c(93,4,4,4,8,8,8,24,24,24),
-            c(93,4,4,4,8,8,8,24,24,24),
-            c(93,4,4,4,8,8,8,24,24,24)
-        ),p1,p2,p3,p4,p5,p6,p7,p8,p21,p22,p23,p24,
+            c(NA,94,94,94,95,95,95,97,97,97,99,99,99),
+            c(90,1,1,1,5,5,5,9,9,9,21,21,21),
+            c(90,1,1,1,5,5,5,9,9,9,21,21,21),
+            c(90,1,1,1,5,5,5,9,9,9,21,21,21),
+            c(91,2,2,2,6,6,6,10,10,10,22,22,22),
+            c(91,2,2,2,6,6,6,10,10,10,22,22,22),
+            c(91,2,2,2,6,6,6,10,10,10,22,22,22),
+            c(92,3,3,3,7,7,7,11,11,11,23,23,23),
+            c(92,3,3,3,7,7,7,11,11,11,23,23,23),
+            c(92,3,3,3,7,7,7,11,11,11,23,23,23),
+            c(93,4,4,4,8,8,8,12,12,12,24,24,24),
+            c(93,4,4,4,8,8,8,12,12,12,24,24,24),
+            c(93,4,4,4,8,8,8,12,12,12,24,24,24)
+        ),p1,p2,p3,p4,p5,p6,p7,p8,p13,p14,p15,p16,p21,p22,p23,p24,
         r1,r2,r3,r4,
-        c1,c2,c6#,c3,c4,c5,c6
+        c1,c2,c4,c6#,c3,c4,c5,c6
     )
 }
 dev.off()
