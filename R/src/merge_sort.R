@@ -115,4 +115,4 @@ merge_sort_verbose = function(array, full_array=array, original_n=length(array),
         n_swaps = n_swaps,
         output = output
     ))
-};merge_sort_verbose(c(5,2,4,3,1))
+}
