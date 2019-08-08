@@ -1,4 +1,11 @@
 
+// #####################################################################
+// #                                                                   #
+// # AUTHOR: Daniel Gaspar Goncalves                                   #
+// # git: https://github.com/d-gaspar/                                 #
+// #                                                                   #
+// #####################################################################
+
 void print_array(int arr[], int pos1, int pos2){
     int i;
     pos1 = 0;
