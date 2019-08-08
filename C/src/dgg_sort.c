@@ -6,39 +6,39 @@
 // #                                                                   #
 // #####################################################################
 
-void print_array(int arr[], int pos1, int pos2){
-    int i;
-    pos1 = 0;
-    pos2 = array_n-1;
-    int n_half = array_n/2;
-
-    if(array_n % 2 == 0){
-        for(i=pos1; i<=pos2; i++){
-            if(i == n_half){
-                printf(" |");
-            }
-            printf(" %d", arr[i]);
-        }
-    } else {
-        for(i=pos1; i<=pos2; i++){
-            if(i == n_half){
-                printf(" | %d |", arr[i]);
-            } else {
-                printf(" %d", arr[i]);
-            }
-        }
-    }
-
-    printf("\n");
-}
-
-void swap(int *a, int *b){
-    int aux;
-
-    aux = *a;
-    *a = *b;
-    *b = aux;
-}
+//void print_array(int arr[], int pos1, int pos2){
+//    int i;
+//    pos1 = 0;
+//    pos2 = array_n-1;
+//    int n_half = array_n/2;
+//
+//    if(array_n % 2 == 0){
+//        for(i=pos1; i<=pos2; i++){
+//            if(i == n_half){
+//                printf(" |");
+//            }
+//            printf(" %d", arr[i]);
+//        }
+//    } else {
+//        for(i=pos1; i<=pos2; i++){
+//            if(i == n_half){
+//                printf(" | %d |", arr[i]);
+//            } else {
+//                printf(" %d", arr[i]);
+//            }
+//        }
+//    }
+//
+//    printf("\n");
+//}
+//
+//void swap(int *a, int *b){
+//    int aux;
+//
+//    aux = *a;
+//    *a = *b;
+//    *b = aux;
+//}
 
 void rainbow_even(int *arr, int pos1, int pos2){
     while(pos1 < pos2){
@@ -123,7 +123,7 @@ void dgg_sort(int *arr, int n, int pos1, int pos2){
 
         // 3 elements
         if(n == 3){
-            
+
             if(arr[pos1] <= arr[pos1+1]){
                 if(arr[pos1+1] <= arr[pos2]){
                     return; // Sorted
@@ -149,7 +149,7 @@ void dgg_sort(int *arr, int n, int pos1, int pos2){
                     return;
                 }
             }
-            
+
         }
 
         int n_half = n/2;
