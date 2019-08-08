@@ -4,7 +4,7 @@
 
 int array_n = 42;
 
-#include "dgg_sort.c"
+#include "src/dgg_sort.c"
 
 int *generate_array(int n, int opt){
     int i, j, aux, aux2=3, *arr;
