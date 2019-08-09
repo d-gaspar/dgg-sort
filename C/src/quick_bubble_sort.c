@@ -60,7 +60,7 @@ void quick_sort_modified(int *arr, int pos1, int pos2, int array_cut){
         if(i <= j){
             swap(&arr[i], &arr[j]);
             i++;
-            j--; //j++;
+            j--;
         }
     }
 
