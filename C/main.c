@@ -24,7 +24,7 @@ int array_cut = 3000; // Quick Bubble sort
 
 int main(void){
 
-    int n=array_n, i, z, *arr, *arr_original;
+    int n=array_n, i, *arr, *arr_original;
 
     double t, c;
 
