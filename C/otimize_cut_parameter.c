@@ -13,12 +13,12 @@
 #include <string.h>
 
 int array_n = 100000;
-int n_arrays = 100;
-int repeats = 100;
-int array_opt = 0; // opts (0=Sorted; 1=Random; 2=Nearly_sorted; 3=Reverse; 4=Few_unique)
+int n_arrays = 1;
+int repeats = 1000;
+int array_opt = 4; // opts (0=Sorted; 1=Random; 2=Nearly_sorted; 3=Reverse; 4=Few_unique)
 
 int array_cut_start = 0; // Quick Bubble sort
-int array_step = 10000;
+int array_step = 1000;
 
 #include "src/general_functions.c"
 #include "src/quick_bubble_sort.c"
@@ -27,7 +27,7 @@ int main(void){
 
     int n=array_n, i, z, *arr, *arr_original, array_cut=array_cut_start;
 
-    double t_cur=0.0, t_prev, clock_cur=0.0, clock_prev;
+    double t_cur=0.0, t_min, clock_cur=0.0, clock_min;
 
     arr = (int *) calloc(n, sizeof(int));
 
@@ -93,9 +93,8 @@ int main(void){
     // #################################################################
 
     int iter=0;
-    int direction=1;
 
-    while(array_cut <= array_n && array_cut >= 0){
+    while(array_cut < array_n){
 
         t_cur = 0.0;
         clock_cur = 0.0;
@@ -103,7 +102,7 @@ int main(void){
         iter++;
 
         if(iter > 1){
-            array_cut = array_cut + (array_step*direction);
+            array_cut = array_cut + array_step;
         }
 
         printf("array_cut = %d\n", array_cut);
@@ -144,21 +143,13 @@ int main(void){
         fprintf(f, "%d\t%.20f\t%.20f\n", array_cut, (t_cur)*1000000, clock_cur);
 
         if(iter > 1){
-//            if(t_cur > t_prev){ // use time as parameter
-            if(clock_cur > clock_prev){ // use clock as parameter
-                if(array_step==1){
-                    exit(0);
-                }
-
-                direction = direction*(-1);
-                array_cut = array_cut + (array_step/2)*direction;
-                array_step = array_step/10;
+            if(clock_cur < clock_min){
+                clock_min = clock_cur;
+            }
+            if(t_cur < t_min){
+                t_min = t_cur;
             }
         }
-
-        t_prev = t_cur;
-        clock_prev = clock_cur;
-
     }
 
     // #################################################################
