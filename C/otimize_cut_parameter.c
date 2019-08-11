@@ -45,28 +45,29 @@ int main(void){
     switch(array_opt){
         case 0:
             printf("opt = Sorted\n");
-            strcpy(file_name, "output/sorted.txt");
+            strcpy(file_name, "output/otimize_cut_parameter/sorted.txt");
             break;
         case 1:
             printf("opt = Random\n");
-            strcpy(file_name, "output/random.txt");
+            strcpy(file_name, "output/otimize_cut_parameter/random.txt");
             break;
         case 2:
             printf("opt = Nearly sorted\n");
-            strcpy(file_name, "output/nearly_sorted.txt");
+            strcpy(file_name, "output/otimize_cut_parameter/nearly_sorted.txt");
             break;
         case 3:
             printf("opt = Reverse\n");
-            strcpy(file_name, "output/reverse.txt");
+            strcpy(file_name, "output/otimize_cut_parameter/reverse.txt");
             break;
         case 4:
             printf("opt = Few unique\n");
-            strcpy(file_name, "output/few_unique.txt");
+            strcpy(file_name, "output/otimize_cut_parameter/few_unique.txt");
             break;
     }
 
     // create file
     mkdir("output");
+    mkdir("output/otimize_cut_parameter");
     FILE *f = fopen(file_name, "w");
     if (f == NULL)
     {
