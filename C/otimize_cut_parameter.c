@@ -18,14 +18,13 @@ int repeats = 1000;
 int array_opt = 4; // opts (0=Sorted; 1=Random; 2=Nearly_sorted; 3=Reverse; 4=Few_unique)
 
 int array_cut_start = 0; // Quick Bubble sort
-int array_step = 1000;
 
 #include "src/general_functions.c"
 #include "src/quick_bubble_sort.c"
 
 int main(void){
 
-    int n=array_n, i, z, *arr, *arr_original, array_cut=array_cut_start;
+    int n=array_n, i, z, *arr, *arr_original, array_cut=array_cut_start, array_step=array_n/100;
 
     double t_cur=0.0, t_min, clock_cur=0.0, clock_min;
 
