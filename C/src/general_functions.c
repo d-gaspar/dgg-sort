@@ -17,7 +17,7 @@ double clock_spent(clock_t start,clock_t stop){
 }
 
 int *generate_array(int n, int opt){
-    int i, j, aux, aux2=3, *arr;
+    int i, j, aux, aux2=n/100, *arr;
 
     arr = (int *) calloc(n, sizeof(int));
 
