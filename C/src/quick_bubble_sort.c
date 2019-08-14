@@ -88,15 +88,15 @@ void quick_bubble_sort_VERBOSE(int *arr, int pos1, int pos2, int array_cut, int 
     i = 0;
     while(i < pos2){
 
-        iter++;
+        (*iter)++;
 
         if(arr[i] > arr[i+1]){
             j = i;
 
-            if(j<0 || arr[j] <= arr[j+1]) iter++;
+            if(j<0 || arr[j] <= arr[j+1]) (*iter)++;
 
             while(j>=0 && arr[j] > arr[j+1]){
-                iter++;
+                (*iter)++;
                 swap(&arr[j], &arr[j+1]);
 
                 j--;
@@ -115,13 +115,15 @@ void quick_sort_modified_VERBOSE(int *arr, int pos1, int pos2, int array_cut, in
 
     while(i <= j){
 
-        if(arr[i] >= pivo || i >= pos2) iter++;
-        if(arr[j] <= pivo || j <= pos1) iter++;
+        if(arr[i] >= pivo || i >= pos2) (*iter)++;
+        if(arr[j] <= pivo || j <= pos1) (*iter)++;
 
         while(arr[i] < pivo && i < pos2){
+            (*iter)++;
             i++;
         }
         while(arr[j] > pivo && j > pos1){
+            (*iter)++;
             j--;
         }
         if(i <= j){
