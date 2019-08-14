@@ -88,8 +88,6 @@ void quick_bubble_sort_VERBOSE(int *arr, int pos1, int pos2, int array_cut, int 
     i = 0;
     while(i < pos2){
 
-        (*iter)++;
-
         if(arr[i] > arr[i+1]){
             j = i;
 
@@ -138,10 +136,9 @@ void quick_sort_modified_VERBOSE(int *arr, int pos1, int pos2, int array_cut, in
     }
 
     if(i < pos2){
-        quick_sort_modified(arr, i, pos2, array_cut);
+        quick_sort_modified_VERBOSE(arr, i, pos2, array_cut, iter);
     }
     if(j > pos1){
-        quick_sort_modified(arr, pos1, j, array_cut);
+        quick_sort_modified_VERBOSE(arr, pos1, j, array_cut, iter);
     }
 }
-
