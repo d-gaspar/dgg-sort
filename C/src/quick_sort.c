@@ -38,15 +38,15 @@ void quick_sort_VERBOSE(int *arr, int pos1, int pos2, int *iter){
 
     while(i <= j){
 
-        if(arr[i] >= pivo || i >= pos2) iter++;
-        if(arr[j] <= pivo || j <= pos1) iter++;
+        if(arr[i] >= pivo || i >= pos2) (*iter)++;
+        if(arr[j] <= pivo || j <= pos1) (*iter)++;
 
         while(arr[i] < pivo && i < pos2){
-            iter++;
+            (*iter)++;
             i++;
         }
         while(arr[j] > pivo && j > pos1){
-            iter++;
+            (*iter)++;
             j--;
         }
         if(i <= j){
