@@ -28,7 +28,9 @@ void quick_bubble_sort(int *arr, int pos1, int pos2, int array_cut){
     while(i < pos2){
 
         if(arr[i] > arr[i+1]){
-            j = i;
+            swap(&arr[i], &arr[i+1]);
+
+            j = i-1;
             while(j>=0 && arr[j] > arr[j+1]){
                 swap(&arr[j], &arr[j+1]);
 
@@ -89,7 +91,9 @@ void quick_bubble_sort_VERBOSE(int *arr, int pos1, int pos2, int array_cut, int 
     while(i < pos2){
 
         if(arr[i] > arr[i+1]){
-            j = i;
+            swap(&arr[i], &arr[i+1]);
+
+            j = i-1;
 
             if(j<0 || arr[j] <= arr[j+1]) (*iter)++;
 
