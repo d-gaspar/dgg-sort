@@ -12,10 +12,10 @@
 #include <direct.h>
 #include <string.h>
 
-int array_n = 100000;
+int array_n = 1000;
 int n_arrays = 1;
 int repeats = 1000;
-int array_opt = 4; // opts (0=Sorted; 1=Random; 2=Nearly_sorted; 3=Reverse; 4=Few_unique)
+int array_opt = 0; // opts (0=Sorted; 1=Random; 2=Nearly_sorted; 3=Reverse; 4=Few_unique)
 
 int array_cut_start = 0; // Quick Bubble sort
 
@@ -34,39 +34,47 @@ int main(void){
 
     clock_t clock_start, clock_stop;
 
-    char file_name[50];
+    char file_name[100], file_name_aux[50];
 
     // #################################################################
 
     // Print header and create arrays
     printf("Quick bubble sort\n");
     printf("n = %d\n", n);
+
+    strcpy(file_name, "output/otimize_cut_parameter/");
+    sprintf(file_name_aux, "%d", array_n);
+    strcat(file_name, file_name_aux);
+    strcat(file_name, "/");
+
+    mkdir("output");
+    mkdir("output/otimize_cut_parameter");
+    mkdir(file_name);
+
     switch(array_opt){
         case 0:
             printf("opt = Sorted\n");
-            strcpy(file_name, "output/otimize_cut_parameter/sorted.txt");
+            strcat(file_name, "sorted.txt");
             break;
         case 1:
             printf("opt = Random\n");
-            strcpy(file_name, "output/otimize_cut_parameter/random.txt");
+            strcat(file_name, "random.txt");
             break;
         case 2:
             printf("opt = Nearly sorted\n");
-            strcpy(file_name, "output/otimize_cut_parameter/nearly_sorted.txt");
+            strcat(file_name, "nearly_sorted.txt");
             break;
         case 3:
             printf("opt = Reverse\n");
-            strcpy(file_name, "output/otimize_cut_parameter/reverse.txt");
+            strcat(file_name, "reverse.txt");
             break;
         case 4:
             printf("opt = Few unique\n");
-            strcpy(file_name, "output/otimize_cut_parameter/few_unique.txt");
+            strcat(file_name, "few_unique.txt");
             break;
     }
 
     // create file
-    mkdir("output");
-    mkdir("output/otimize_cut_parameter");
     FILE *f = fopen(file_name, "w");
     if (f == NULL)
     {
