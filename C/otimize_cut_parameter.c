@@ -43,7 +43,7 @@ int main(void){
     printf("n = %d\n", n);
 
     strcpy(file_name, "output/otimize_cut_parameter/");
-    sprintf(file_name_aux, "%d", array_n);
+    sprintf(file_name_aux, "n_%d", array_n);
     strcat(file_name, file_name_aux);
     strcat(file_name, "/");
 
