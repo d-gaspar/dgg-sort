@@ -14,19 +14,20 @@ options(scipen = 999)
 ########################################################################
 
 paths = list.dirs("otimize_cut_parameter", full.names=F)[-1]
+paths = gsub("n_", "", paths)
 paths = paths[order(as.numeric(paths))]
 
 pdf("otimize_cut_parameter/otimize_cut_parameter.pdf", width=12, height=9)
 for(p in paths){
     
-    files = list.files(paste0("otimize_cut_parameter/", p))
+    files = list.files(paste0("otimize_cut_parameter/n_", p))
     
     df = data.frame()
     
     for(f in files){
         opt = strsplit(f, split="[.]")[[1]][1]
         
-        df_aux = read.table(paste0("otimize_cut_parameter/", p, "/", f), header=TRUE)
+        df_aux = read.table(paste0("otimize_cut_parameter/n_", p, "/", f), header=TRUE)
         df_aux$n = p
         df_aux$opt = opt
         
