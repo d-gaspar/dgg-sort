@@ -1,6 +1,6 @@
 
 void quick_sort(int *arr, int pos1, int pos2);
-void quick_sort_VERBOSE(int *arr, int pos1, int pos2, int *iter);
+void quick_sort_VERBOSE(int *arr, int pos1, int pos2, long long int *iter);
 
 void quick_sort(int *arr, int pos1, int pos2){
 
@@ -30,7 +30,7 @@ void quick_sort(int *arr, int pos1, int pos2){
     }
 }
 
-void quick_sort_VERBOSE(int *arr, int pos1, int pos2, int *iter){
+void quick_sort_VERBOSE(int *arr, int pos1, int pos2, long long int *iter){
 
     int pivo, i=pos1, j=pos2, aux;
 
