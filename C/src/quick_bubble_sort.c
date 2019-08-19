@@ -8,8 +8,8 @@
 
 void quick_bubble_sort(int *arr, int pos1, int pos2, int array_cut);
 void quick_sort_modified(int *arr, int pos1, int pos2, int array_cut);
-void quick_bubble_sort_VERBOSE(int *arr, int pos1, int pos2, int array_cut, int *iter);
-void quick_sort_modified_VERBOSE(int *arr, int pos1, int pos2, int array_cut, int *iter);
+void quick_bubble_sort_VERBOSE(int *arr, int pos1, int pos2, int array_cut, long long int *iter);
+void quick_sort_modified_VERBOSE(int *arr, int pos1, int pos2, int array_cut, long long int *iter);
 
 void quick_bubble_sort(int *arr, int pos1, int pos2, int array_cut){
 
@@ -74,7 +74,7 @@ void quick_sort_modified(int *arr, int pos1, int pos2, int array_cut){
     }
 }
 
-void quick_bubble_sort_VERBOSE(int *arr, int pos1, int pos2, int array_cut, int *iter){
+void quick_bubble_sort_VERBOSE(int *arr, int pos1, int pos2, int array_cut, long long int *iter){
 
     int i, j;
 
@@ -109,7 +109,7 @@ void quick_bubble_sort_VERBOSE(int *arr, int pos1, int pos2, int array_cut, int 
     }
 }
 
-void quick_sort_modified_VERBOSE(int *arr, int pos1, int pos2, int array_cut, int *iter){
+void quick_sort_modified_VERBOSE(int *arr, int pos1, int pos2, int array_cut, long long int *iter){
 
     int pivo, i=pos1, j=pos2;
 
