@@ -22,6 +22,7 @@ for(p in paths){
     files = list.files(paste0("time_comparison/", p), pattern = "*txt")
     
     plot_list = list()
+    speedup_plot = list()
     
     for(f in files){
         opt = strsplit(f, split="[.]")[[1]][1]
@@ -40,7 +41,7 @@ for(p in paths){
         
         plot_list[[opt]] = ggplot(df, aes(x=n, y=clock_ms)) +
             geom_point(aes(color=method)) +
-            labs(title=opt) +
+            labs(title=paste0("time (clock) - ", opt)) +
             theme(
                 panel.background = element_blank()
             ) +
@@ -62,10 +63,41 @@ for(p in paths){
         #             formula = y ~ poly(x, 4, raw=T)
         #         )
         # }
+        
+        df_speedup = data.frame()
+        
+        for(n in unique(df$n)){
+            df_aux = df[df$n==n,]
+            
+            df_speedup = rbind(df_speedup, data.frame(
+                n = n,
+                cut = unique(df_aux$cut),
+                speedup = df_aux[df_aux$method=="Quick_sort","clock_ms"] / df_aux[df_aux$method=="Quick_bubble_sort","clock_ms"]
+            ))
+        }
+        
+        speedup_plot[[opt]] = ggplot(df_speedup, aes(x=n, y=speedup)) +
+            geom_point() +
+            labs(
+                title = paste0(
+                    "SpeedUp - ",
+                    opt,
+                    " - ",
+                    ifelse(
+                        p=="cut_10000",
+                        "cut: 10.000",
+                        "cut: n*0.87"
+                    )
+                )
+            ) +
+            theme(
+                panel.background = element_blank()
+            )
     }
     
     ####################################################################
     
     grid.arrange(grobs=plot_list)
+    grid.arrange(grobs=speedup_plot)
 }
 dev.off()
