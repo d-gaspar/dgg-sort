@@ -15,13 +15,8 @@ void quick_bubble_sort(int *arr, int pos1, int pos2, int array_cut){
 
     int i, j;
 
-    if((pos2-pos1) <= array_cut){
-        // Single Quick sort
-        quick_sort_modified(arr, pos1, pos2, array_cut);
-    } else {
-        // Quick sort
-        quick_sort_modified(arr, pos1, pos2, array_cut);
-    }
+    // Quick sort
+    quick_sort_modified(arr, pos1, pos2, array_cut);
 
     // Bubble
     i = 0;
@@ -77,14 +72,9 @@ void quick_sort_modified(int *arr, int pos1, int pos2, int array_cut){
 void quick_bubble_sort_VERBOSE(int *arr, int pos1, int pos2, int array_cut, long long int *iter){
 
     int i, j;
-
-    if((pos2-pos1) <= array_cut){
-        // Single Quick sort
-        quick_sort_modified_VERBOSE(arr, pos1, pos2, array_cut, iter);
-    } else {
-        // Quick sort
-        quick_sort_modified_VERBOSE(arr, pos1, pos2, array_cut, iter);
-    }
+    
+    // Quick sort
+    quick_sort_modified_VERBOSE(arr, pos1, pos2, array_cut, iter);
 
     // Bubble
     i = 0;
